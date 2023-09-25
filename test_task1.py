@@ -19,11 +19,11 @@ from task1 import simple_water_bill, COST_PER_GALLON
 def test_simple_water_bill(monkeypatch, capsys, gallons_usage, expected_output):
     # Simulate user input using monkeypatch
     monkeypatch.setattr('builtins.input', lambda _: str(gallons_usage))
-    
+
     # Call the function and capture its output
     simple_water_bill()
     captured = capsys.readouterr()
-    
+
     # Check if the output matches the expected output
     assert captured.out == expected_output
 

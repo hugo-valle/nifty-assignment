@@ -74,6 +74,11 @@ Python Module: `Testing`
 - Write clear and concise documentation for your program, including explanations of how to use it and what each function does.
 - Test your program with different input scenarios, including edge cases, and ensure it produces accurate results.
 
+## Other ideas
+
+- Smart irrigation system. Connect to a weather API and automatically postpone the watering cycle based on the weather. 
+- Two minute shower challenge
+- Xeriscape Yard: Initial investment, calculate how long it will take to ROI.
 
 
 # Student Survey

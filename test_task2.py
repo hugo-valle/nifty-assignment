@@ -1,7 +1,7 @@
 """Test code for task1.py
 """
 import pytest
-from task1 import simple_water_bill
+from task2 import simple_water_bill
 
 # Test cases for simple_water_bill()
 # Use pytest.mark.parametrize decorator to pass multiple test cases
@@ -9,10 +9,10 @@ from task1 import simple_water_bill
 # First element in the tuple is the input, second element is the
 #  expected output
 @pytest.mark.parametrize("gallons_usage, expected_output", [
-    (100, "You used 100 gallons, your bill is $8.00\n"),
-    (200, "You used 200 gallons, your bill is $16.00\n"),
-    (2500, "You used 2500 gallons, your bill is $200.00\n"),
-    (3214, "You used 3214 gallons, your bill is $257.12\n"),
+    (100, "You used 100 gallons, your bill is $30.00\n"),
+    (2000, "You used 2000 gallons, your bill is $30.00\n"),
+    (2001, "You used 2001 gallons, your bill is $30.08\n"),
+    (4520, "You used 4520 gallons, your bill is $231.60\n"),
 ])
 
 

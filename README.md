@@ -21,6 +21,7 @@ How many gallons you used this month?
 ```
 
 Sample Output: 
+Using `0.08` per gallon
 ```
 You Used ## gallons, your bill is $#.##
 ```
@@ -57,6 +58,8 @@ How many gallons you used this month?
 ```
 
 Sample Output: 
+Using `$30.00` for basic rate and  `$0.08` per gallon for any additional gallons
+
 ```
 You Used ## gallons, your bill is $#.##
 ```
@@ -93,6 +96,11 @@ How many gallons you used this month?
 ```
 
 Sample Output:
+Using the following data
+- Tier 1: `$30.00` 0-2000 gallons
+- Tier 2: `$0.08` per gallon for 2001 to 5000 gallons
+- Tier 3: `$0.20` per gallon for more than 5001 gallons
+
 ```
 You used ## gallons, your bill is $##.##
 Tier1 (0-2000): 2000 gallons,  $##.##

@@ -22,17 +22,22 @@ def tier_water_bill():
         elif gallons_usage > 2000 and gallons_usage <= 5000:
             gallons['tier1'] += 2000
             charges['tier1'] += 30.00
-            gallons['tier2'] += gallons_usage - 2000
-            charges['tier2'] += gallons['tier2'] * 0.08
+            temp_tier2 = gallons_usage - 2000
+            gallons['tier2'] += temp_tier2
+            charges['tier2'] += temp_tier2 * 0.08
         # Tier 3: more than 5000 gallons
         # Gallons in this range are charged at $0.20 per gallon
         else:  # gallons_usage > 5000:
             gallons['tier1'] += 2000
             charges['tier1'] += 30.00
-            gallons['tier2'] += 3000
-            charges['tier2'] += gallons['tier2'] * 0.08
-            gallons['tier3'] += gallons_usage - 5000
-            charges['tier3'] += gallons['tier3'] * 0.20
+
+            temp_tier2 = 3000
+            gallons['tier2'] += temp_tier2
+            charges['tier2'] += temp_tier2 * 0.08
+            
+            temp_tier3 = gallons_usage - 5000
+            gallons['tier3'] += temp_tier3
+            charges['tier3'] += temp_tier3 * 0.20
         
     charges['final'] = charges['tier1'] + charges['tier2'] + charges['tier3']
     gallons['final'] = gallons['tier1'] + gallons['tier2'] + gallons['tier3']

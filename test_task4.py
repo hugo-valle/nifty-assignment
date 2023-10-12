@@ -9,9 +9,9 @@ from task4 import tier_water_bill
 # First element in the tuple is the input, second element is the
 #  expected output
 @pytest.mark.parametrize("expected_output", [
-    ('''You used 29370 gallons, your bill is $2388.00
+    ('''You used 29370 gallons, your bill is $1168.00
 Tier1 (0-2000): 19300 gallons,  $360.00
-Tier2 (2001-5000): 10050 gallons,  $2024.00
+Tier2 (2001-5000): 10050 gallons,  $804.00
 Tier3 (more than 5001): 20 gallons,  $4.00\n'''),
 ])
 

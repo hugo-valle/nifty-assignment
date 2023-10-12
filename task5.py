@@ -2,8 +2,9 @@
 Calculate your water bill based on tier pricing
 """
 
-GALLONS_TIER1 = 2000  # gallons in tier 1
-GALLONS_TIER2 = 5000  # gallons in tier 2
+GALLONS_TIER1 = 2000  # gallons in tier 1, up to 2000
+GALLONS_TIER2 = 3000  # gallons in tier 2, 2001 to 5000
+GALLONS_TIER3 = 5000  # gallons in tier 3, more than 5000
 
 PRICE_TIER1 = 30.00     # price per gallon in tier 1
 PRICE_TIER2 = 0.08      # price per gallon in tier 2
@@ -37,11 +38,13 @@ def _water_bill_tier2(gallons, charges, gallons_usage):
     """
     # Tier 2: GALLONS_TIER1 + 1 to GALLONS_TIER2 gallons
     # Gallons in this range are charged at $PRICE_TIER2 per gallon
-    if gallons_usage > GALLONS_TIER1 and gallons_usage <= GALLONS_TIER2:
+    if gallons_usage > GALLONS_TIER1 and gallons_usage <= GALLONS_TIER3:
         gallons['tier1'] += GALLONS_TIER1
         charges['tier1'] += PRICE_TIER1
-        gallons['tier2'] += gallons_usage - GALLONS_TIER1
-        charges['tier2'] += gallons['tier2'] * PRICE_TIER2
+
+        temp_tier2 = gallons_usage - GALLONS_TIER1
+        gallons['tier2'] += temp_tier2
+        charges['tier2'] += temp_tier2 * PRICE_TIER2
 
 
 def _water_bill_tier3(gallons, charges, gallons_usage):
@@ -54,13 +57,17 @@ def _water_bill_tier3(gallons, charges, gallons_usage):
     """
     # Tier 3: more than GALLONS_TIER2 gallons
     # Gallons in this range are charged at $PRICE_TIER3 per gallon
-    if gallons_usage > GALLONS_TIER2:
+    if gallons_usage > GALLONS_TIER3:
         gallons['tier1'] += GALLONS_TIER1
         charges['tier1'] += PRICE_TIER1
-        gallons['tier2'] += GALLONS_TIER2 - GALLONS_TIER1
-        charges['tier2'] += gallons['tier2'] * PRICE_TIER2
-        gallons['tier3'] += gallons_usage - GALLONS_TIER2
-        charges['tier3'] += gallons['tier3'] * PRICE_TIER3
+
+        temp_tier2 = GALLONS_TIER2
+        gallons['tier2'] += temp_tier2
+        charges['tier2'] += temp_tier2 * PRICE_TIER2
+        
+        temp_tier3 = gallons_usage - GALLONS_TIER3
+        gallons['tier3'] += temp_tier3
+        charges['tier3'] += temp_tier3 * PRICE_TIER3
 
 
 def calculate_final_water_bill(gallons, charges):
@@ -83,8 +90,8 @@ def print_water_bill(gallons, charges):
     """
     print(f"You used {gallons['final']} gallons, your bill is ${charges['final']:.2f}")
     print(f"Tier1 (0-{GALLONS_TIER1}): {gallons['tier1']} gallons,  ${charges['tier1']:.2f}")
-    print(f"Tier2 ({GALLONS_TIER1 + 1}-{GALLONS_TIER2}): {gallons['tier2']} gallons,  ${charges['tier2']:.2f}")
-    print(f"Tier3 (more than {GALLONS_TIER2 +1}): {gallons['tier3']} gallons,  ${charges['tier3']:.2f}")
+    print(f"Tier2 ({GALLONS_TIER1 + 1}-{GALLONS_TIER3}): {gallons['tier2']} gallons,  ${charges['tier2']:.2f}")
+    print(f"Tier3 (more than {GALLONS_TIER3 +1}): {gallons['tier3']} gallons,  ${charges['tier3']:.2f}")
     
     
 def tier_water_bill(year_usage):
